@@ -431,7 +431,7 @@ static inline t_vec3 vec3_sub(t_vec3 a, t_vec3 b) {
 
 static inline t_vec3 vec3_scale(t_vec3 vec, float s) {
 	t_vec3 factor = { .v = v4sf_n(s) };
-	return (vec3_mul(vec, factor));
+	return vec3_mul(vec, factor);
 }
 
 static inline t_vec3 vec3_cross(t_vec3 a, t_vec3 b) {
@@ -459,11 +459,11 @@ static inline t_vec3 vec3_normalize(t_vec3 vec) {
 		return (t_vec3){ 0 };
 
 	float len_recip = 1.0f / sqrtf(len_sq);
-	return (vec3_scale(vec, len_recip));
+	return vec3_scale(vec, len_recip);
 }
 
 static inline float vec3_length(t_vec3 vec) {
-	return (sqrtf(vec3_dot(vec, vec)));
+	return sqrtf(vec3_dot(vec, vec));
 }
 
 static inline t_vec3 vec3_mul(t_vec3 a, t_vec3 b) {
@@ -549,7 +549,7 @@ static inline uint32_t vec3_to_uint32(t_vec3 vec) {
 	res = _mm_cvtps_epi32(vec.v * v4sf_n(255.0f));
 	res = _mm_packs_epi32(res, res);
 	res = _mm_packus_epi16(res, res);
-	return ((uint32_t)_mm_cvtsi128_si32(res) | 0xFF000000);
+	return (uint32_t)_mm_cvtsi128_si32(res) | 0xFF000000;
 }
 
 static inline float vec3_dist(t_vec3 a, t_vec3 b) {
@@ -558,7 +558,7 @@ static inline float vec3_dist(t_vec3 a, t_vec3 b) {
 
 static inline float vec3_dist_sq(t_vec3 a, t_vec3 b) {
 	t_vec3 diff = vec3_sub(b, a);
-	return (vec3_dot(diff, diff));
+	return vec3_dot(diff, diff);
 }
 
 static inline bool vec3_is_nan_inf(t_vec3 vec) {
@@ -662,7 +662,7 @@ static inline t_vec4 mat4_mul_vec4(const t_mat4* src, t_vec4 vec) {
 			t.rows[2] * v4sf_n(vec.z) +
 			t.rows[3] * v4sf_n(vec.w);
 	// clang-format on
-	return (res);
+	return res;
 }
 
 static inline t_vec3 mat4_mul_vec3(const t_mat4* src, t_vec3 vec) {
@@ -1011,7 +1011,7 @@ static inline uint32_t pcg(uint32_t* state) {
 }
 
 static inline float randomf(uint32_t* seed) {
-	return (float)(pcg(seed));
+	return (float)pcg(seed);
 }
 
 static inline float randomf01(uint32_t* seed) {
