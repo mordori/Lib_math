@@ -190,7 +190,7 @@ static inline float clampf(float value, float min, float max);
 static inline float f_schlick(float u, float f0, float f90);
 static inline float degrees_to_rad(float degrees);
 static inline float rad_to_degrees(float rad);
-static inline bool ft_is_pot(size_t n);
+static inline bool is_pot(size_t n);
 static inline size_t ft_pow(size_t n, size_t e);
 static inline uint32_t ft_uint_min(uint32_t a, uint32_t b);
 static inline bool is_nan_inf(float x);
