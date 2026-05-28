@@ -1,8 +1,6 @@
 #ifndef LIB_MATH_H
 #define LIB_MATH_H
 
-#define _GNU_SOURCE
-
 #include <float.h>
 #include <limits.h>
 #include <math.h>
